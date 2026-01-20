@@ -1,0 +1,53 @@
+import React from 'react'
+
+function Groups(props) {
+    
+  return (
+    <div>
+        <section className='groupcards1'>
+            <div className="img1"><img src="https://i.pinimg.com/originals/b0/e5/04/b0e5041d005636563da50cd111d9c80e.jpg" height={379} width={380} className='zoom-img'/></div>
+            <div className="colorcards" id="second"><h3>DRIVING BUSINESS VALUE WITH AGENTIC AI</h3>
+            <p>A Harvard Business Review Analytic Services Report sponsored by Amivel</p><br /><br />
+            <br />
+            </div>
+            <div className="img2"><img src="https://img.freepik.com/premium-photo/laptop-is-open-display-brand-new-technology_976564-6685.jpg" alt="" srcset="" height={379} width={380} className='zoom-img'/>
+            </div>
+            <div className="colorcards" id="fourth"><h3>INTRODUCING THE Amivel INNOVATION NETWORK</h3>
+            <p>A catalyst for AI-powered co-innovation.</p><br /><br /><br /><br /><br /><br />
+            <br />
+            </div>
+        </section>
+        <section className='groupcards2'>
+            <div className='colorcards' id="eight">
+            <p>Amivel ACQUIRES HARMAN’S DIGITAL TRANSFORMATION SOLUTION (DTS) BUSINESS UNIT, DEEPENING ENGINEERING</p>
+            </div>
+            <div className="img3"><img src="https://tse1.explicit.bing.net/th/id/OIP.SmvW6d6ww4_ueMurxv415wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3 " alt="" srcset="" height={379} width={380} className='zoom-img'/></div>
+                <div className="colorcards" id="fifth">
+                <h3>
+                    THE NEXT BIG THING: SUPPLY CHAIN
+                </h3>
+                <p>A Consumer Goods Technology report in collaboration with Amivel.</p>
+                <br /><br /><br /><br /><br /><br />
+                </div>
+            <div className="img4"><img src="https://tse2.mm.bing.net/th/id/OIP.wbQkqjgeuyuAuYf5Bah5UgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" height={379} width={380} className='zoom-img'/></div>
+            
+        </section>
+        <section className='groupcards3'>
+            <div className="img5"><img src="https://tse4.mm.bing.net/th/id/OIP.drdtaZaChZdebxwJ1MhdGwAAAA?pid=ImgDet&w=184&h=200&c=7&dpr=1.3&o=7&rm=3" alt="" height={379} width={380} className='zoom-img'/></div>
+            <div className="colorcards" id="sixth">
+                <h3>TRANSFORMATION IN A TIME OF DISRUPTION</h3>
+                <p>Corporations are feeling the pressure in today’s volatile macroeconomic environment. Supply chains are</p>
+                <br /><br /><br /><br /><br /><br />
+            </div>
+            <div className="img6"><img src="https://tse4.mm.bing.net/th/id/OIP.buR4_KhPjYdp5IZVGREsRgHaJ4?pid=ImgDet&w=474&h=632&rs=1&o=7&rm=3" alt="" height={379} width={380} className='zoom-img'/></div>
+            <div className="colorcards" id="seventh">
+                <h3>INDIA'S BRANCH OF THE FUTURE</h3>
+                <p>Discover how Indian banks can equip their branches for future success in this cutting-edge Capco</p>
+                <br /><br /><br /><br /><br /><br /><br />
+            </div>
+        </section>
+    </div>
+  )
+}
+
+export default Groups

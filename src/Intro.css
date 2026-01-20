@@ -1,0 +1,120 @@
+.intro-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Video */
+.bg-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Dark Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* Content */
+.intro-content {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  top: 50%;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 1.3s ease;
+}
+
+.intro-content.show {
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.intro-content h1 {
+  font-size: 60px;
+  letter-spacing: 3px;
+  animation: glow 2s infinite alternate;
+}
+
+.intro-content h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+.intro-content p {
+  margin-top: 18px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Features */
+.features {
+  margin-top: 30px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features span {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  backdrop-filter: blur(8px);
+}
+
+/* Floating Images */
+.floating {
+  position: absolute;
+  width: 80px;
+  animation: float 6s infinite ease-in-out;
+  opacity: 0.85;
+}
+
+.cloud {
+  top: 20%;
+  left: 10%;
+}
+
+.code {
+  top: 65%;
+  right: 15%;
+  animation-delay: 1s;
+}
+
+.analytics {
+  top: 35%;
+  right: 8%;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00d4ff;
+  }
+  to {
+    text-shadow: 0 0 25px #00d4ff;
+  }
+}

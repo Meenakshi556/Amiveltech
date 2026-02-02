@@ -6,11 +6,13 @@ function Opinion() {
         
 {/* <!-- HERO SECTION --> */}
 <section class="hero"><br /><br /><br /><br /><br /><br /><br />
+<div className='hero-content'>
   <h1>What We Think</h1>
   <p>
     We believe technology should simplify business,
     accelerate growth, and create real impact.
   </p>
+  </div>
 </section>
 
 {/* <!-- THINKING CARDS --> */}

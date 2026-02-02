@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-// import React from 'react'
-import Careers from './Careers';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 
 
 function Start() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const[open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   useEffect(() => {
@@ -23,7 +20,7 @@ function Start() {
   return (
     <div className='start'>
         <nav className='navbar'>
-            <img id="logo"src="https://amiveltech.com/images/logo.png" alt="logo" width="300"/>
+            <img id="logo" onClick={() => window.open("/","_blank")}src="https://amiveltech.com/images/logo.png" alt="logo" width="300"/>
             <ul type="none" className='menu'>
                 <li className="menu-item"
                 onMouseEnter={() => setOpen(true)}

@@ -34,7 +34,7 @@ function Contact() {
     );
 
     if (res.data.status === "success") {
-      alert("Form submitted successfully");
+      alert("Submitted Successfully");
     } else {
       alert("Failed: " + res.data.message);
     }
@@ -44,13 +44,14 @@ function Contact() {
   }
 };
   return (
-    <section className='contact-menu'>
-      <br /><br />
-      <article>
-        <aside>
-          Contact Us
-        </aside>
-      </article>
+    <>
+     <section class="hero"><br /><br /><br /><br /><br /><br /><br />
+     <div className='hero-content'>
+      <h1>Contact Us</h1>
+      </div>
+    </section> 
+    <section className='contact-us'>
+      <br /><br />   
       <div className='send-messege'>
         <h2>
           To make requests for
@@ -97,24 +98,23 @@ contact us via our social channels.
         <br /><button id='send-btn'>Send Messege</button>
         </form>
     </div>
+    <div className='hero-content'>
     <img id="messege-img"src="https://th.bing.com/th/id/OIP.SVc0OODuuJpfSIw5DrZjVgHaHa?w=195&h=196&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="" width={500}/>
+    </div>
     <br /><br />
-      <div className='contact-details'>
-      <div className='contact-location'><br />
-        <img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>P No 16, Prasanthi Hills
+    <div className='contact-address'>
+        <ul type='none'>
+          <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>P No 16, Prasanthi Hills
 Bachupally,Nizampet Hyderabad <br />
-Telangana, India - 500090</p>
-        </div><br />
-        <div className='contact-email'><br />
-          <img src="https://cdn-icons-png.flaticon.com/128/646/646135.png" alt="" width={30} height={30}/>
-          <p>HR@amiveltech.com</p>
-        </div><br />
-        <div className='contact-call'><br />
-          <img src="https://cdn-icons-png.flaticon.com/128/483/483947.png" alt=""  width={30} height={30}/>
-          <p>+91 9989498088</p>
-        </div>
+Telangana, India - 500090</p></li>
+          <li><img src="https://cdn-icons-png.flaticon.com/128/646/646135.png" alt="" width={30} height={30}/><p>HR@amiveltech.com </p></li>
+          <li><img src="https://cdn-icons-png.flaticon.com/128/483/483947.png" alt=""  width={30} height={30}/>
+          <p>+91 9989498088</p></li>
+        </ul>
         </div>
     </section>
+
+    </>
   )
 }
 

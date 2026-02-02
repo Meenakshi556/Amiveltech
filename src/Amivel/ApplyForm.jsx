@@ -1,5 +1,8 @@
 import React,{useState} from 'react';
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 
 function ApplyForm() {
     const [formData, setFormData] = useState({
@@ -9,9 +12,13 @@ function ApplyForm() {
         mobile:"",
         college:"",
         experience:"",
-        resume:null
+        // resume:null
       })
+      const location = useLocation();
+const { jobId, jobTitle, company } = location.state || {};
+
       const [resume, setResume] = useState(null);
+
 
        const handleChange = e => {
         const { name,value} = e.target;
@@ -30,6 +37,10 @@ function ApplyForm() {
     const data = new FormData();
     Object.keys(formData).forEach(key => data.append(key, formData[key]));
     data.append("resume", resume); // FILE
+    data.append("jobId", jobId);
+data.append("jobTitle", jobTitle);
+data.append("company", company);
+
 
     try {
       const res = await axios.post(
@@ -52,11 +63,16 @@ function ApplyForm() {
   };
   return (
     <div>
-            <section className='Apply-form'>
+            <section className='Apply-form'><br />
+              <h3 style={{ marginBottom: "10px" ,marginLeft: "80vh"}}>
+  Applying for: <span style={{ color: "#0a58ca" }}>{jobTitle}</span>
+</h3>
+<p style={{ marginBottom: "10px" ,marginLeft: "80vh"}}><b>
+  Company: {company}</b></p>
       <form onSubmit={handleSubmit }>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" onClick={()=> window.open("/careers","_blank")}/>Back
-</svg><br /><br />
+        <Link to="/careers"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"  />Back
+</svg></Link><br /><br />
 <label className='dob'>First Name*</label>
         <input 
         className='Apply-inputs'
@@ -91,12 +107,12 @@ function ApplyForm() {
         className='Apply-inputs'
          value={formData.college}
         onChange={handleChange}/><br /><br />
-        <label className='dob'>Experiance</label>
+        <label className='dob'>Experiance*</label>
         <input type="number" name="experience" 
         className='Apply-inputs' placeholder='Experience'
          value={formData.experience}
         onChange={handleChange}/><br /><br />
-        <p>Upload Resume*</p>  
+        <label className='dob'>Upload Resume*</label>  
         <input type='file' name='resume' 
         className='Apply-inputs'     
         onChange={handleFileChange} required/>

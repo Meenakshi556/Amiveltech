@@ -1,119 +1,64 @@
-import React, { useState} from 'react'
-import axios from 'axios';
+import React, { useState } from "react";
 
 function Last() {
-  const [formData,setFormData] = useState({
-    firstName: "",
-    lastName:"",
-    email:"",
-    jobTitle:"",
-    company:"",
-    country:"",
-    message:"",
-  })
+  const images = [
+    "https://b2343758.smushcdn.com/2343758/wp-content/uploads/indexed-universal-life-insurance-a-complete-guide.jpeg?lossy=1&strip=1&webp=1",
+    "https://img.freepik.com/premium-photo/different-careers-insurance-wording-insurance-is-important-ensure-risk-guarantee-stability-life-health-financial-concept_50039-5223.jpg",
+    "https://dev.findqualityinsurance.com/wp-content/uploads/2017/06/Health-Insurance.jpg",
+    "https://landen.imgix.net/cy57inb2lyhe/assets/yn6thu8i.jpg",
+    "https://globalbusinessdiary.com/wp-content/uploads/2023/07/Types-Of-Business-Insurance-Policies.jpg"
+  ];
 
-  const handleChange =(e) =>{
-    const { name,value} = e.target;
-  
-  setFormData({
-    ...formData,
-      [name] : value,
-    })
-  }
-  const handleSubmit = async (e)=>{
-    e.preventDefault();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    try{
-      const response = await axios.post(
-        "http://localhost/api/insert.php",
-        {
-          firstName: formData.firstName,
-          lastName:formData.lastName,
-          email:formData.email,
-          jobTitle:formData.jobTitle,
-          company:formData.company,
-          country:formData.country,
-          message:formData.message,
-        },
-        {
-          headers:{
-            "Content-Type": "application/json"
-          }
-        }
-
-      );
-      if(response.data.status === "success"){
-        alert("Form submitted successfully");
-      } else {
-        alert(response.data.message);
-      }
-    }catch(error){
-        console.error(error);
-        alert("Server error");
-      }
-    };
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
-    <div>
-        <p id="Everyday">Every day, Amivel leverages AI-infused technologies <br />
-&nbsp; &nbsp; to empower clients around the globe to build <br />
-&nbsp;a more resilient, secure and sustainable future..<br /></p>
-        <p id="how">How can we help you?</p>
-        <form action="" onSubmit={handleSubmit}>
-        <input type="text"
-        className='dashedline' 
-           placeholder="First Name"
-           name="firstName" 
-           value={formData.firstName}
-           onChange={handleChange}
-           /><br /><br />
-        <input type="text"
-        className='dashedline' 
-           placeholder="Last Name"
-           name="lastName" 
-           value={formData.lastName}
-           onChange={handleChange}
-         /><br /><br />
-        <input type="email"
-        className='dashedline' 
-           placeholder="Work Email"
-           name="email" 
-           value={formData.email}
-           onChange={handleChange}
-         /><br /><br />
-        <input type="text"
-        className='dashedline' 
-           placeholder="Job Title"
-           name="jobTitle" 
-           value={formData.jobTitle}
-           onChange={handleChange}
-         /><br /><br />
-        <input type="text"
-        className='dashedline' 
-           placeholder="Company"
-           name="company" 
-           value={formData.company}
-           onChange={handleChange}
-         /><br /><br />
-        <input type="text"
-        className='dashedline' 
-           placeholder="Country"
-           name="country" 
-           value={formData.country}
-           onChange={handleChange}
-         /><br /><br />
-        <input type="text"
-        className='dashedline' 
-           placeholder="Message"
-           name="message" 
-           value={formData.message}
-           onChange={handleChange}
-         /><br /><br />
-        <br /><button id='btn2'>Submit</button>
-        <p id="paraend">Click here to opt out of Amivel’s mailing lists.</p>
-        </form>
-    </div>
-  )
+    <>
+      <h1 style={{ fontSize: "55px", textAlign: "center" }}>Our Product</h1>
+      <h3 style={{ fontSize: "35px", color: "#dc9a0e", textAlign: "center" }}>
+        Pertenziya
+      </h3>
+
+      <p style={{ margin: "20px auto", maxWidth: "900px", fontSize: "15px" }}>
+        The name <strong>Pertenziya</strong> is derived from a Russian word that
+        means <em>"claim"</em>. It represents our core purpose of assisting and
+        supporting clients throughout the insurance claim process.
+      </p>
+
+      <div style={{ textAlign: "center" }}>
+        <img
+          src={images[currentIndex]}
+          alt="Slider"
+          onClick={nextImage}
+          style={{
+            width: "100%",
+            maxWidth: "1000px",
+            height: "600px",
+            objectFit: "cover",
+            borderRadius: "15px",
+            cursor: "pointer",
+            boxShadow: "0 6px 15px rgba(0,0,0,0.2)"
+          }}
+        />
+
+        {/* DOTS */}
+        <div className="gallery-dots" style={{ marginTop: "15px" }}>
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={`dot ${currentIndex === index ? "active" : ""}`}
+              onClick={() => setCurrentIndex(index)}
+            ></span>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Last
+export default Last;

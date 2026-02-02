@@ -31,22 +31,18 @@ function SiteFooter() {
             </div>
             <div>
                 <h3>Connect with us</h3>
-                <div className='footer-location'><br />
-        <img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>P No 16, Prasanthi Hills
-Bachupally,Nizampet Hyderabad <br />
-Telangana, India - 500090</p>
-                </div>
-                <div className='footer-email'><br />
-          <img src="https://cdn-icons-png.flaticon.com/128/646/646135.png" alt="" width={30} height={30}/>
-          <p>HR@amiveltech.com</p>
-                </div>
-                <div className='footer-call'><br />
-                    <img src="https://cdn-icons-png.flaticon.com/128/483/483947.png" alt=""  width={25} height={25}/>
-                    <p>+91 9989498088</p>
-                </div>
+                <ul className="footer-details"type='none'>
+                    <li><p>P No 16, Prasanthi Hills
+Bachupally,Nizampet <br />Hyderabad
+Telangana, India - 500090</p></li>
+                    <li>
+          <p>HR@amiveltech.com</p></li>
+                    <li>
+                    <p>+91 9989498088</p></li>
+                </ul>
             </div>
             </div>
-            <p id="footer-para">&copy;2025@Amivel Tech Pvt Ltd</p>
+            <p id="footer-para">&copy;2026@Amivel Tech Pvt Ltd</p>
         </footer>
     </div>
   )

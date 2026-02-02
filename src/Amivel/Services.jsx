@@ -3,19 +3,20 @@ import React from 'react'
 function Services() {
   return (
     <>
+        <section class="hero"><br /><br /><br /><br /><br /><br /><br />
+        <div className='hero-content'>
+            <h1>Our Services</h1>    
+            </div>
+        </section>
         <section className='services-menu'>
-            <article>
-                <aside>
-                    Services
-                </aside>
-            </article>
             <div className='cloud-services'>
                 <div className='services-images'>
                 <img src="https://nexthop.ca/it-news/wp-content/uploads/2020/10/shutterstock_1120711154-4-1024x584.jpg" alt="" width={600} />
                 </div>
                 <div className='services-details'>
                    < h2>Cloud Services</h2>
-            <p>Scalable Cloud solutions including infrastructure setup,migration,and management on AWS,Azure, and Google Cloud platforms.</p>
+            <p>AmivelTech provides scalable cloud services in India, including cloud infrastructure setup,
+cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Google Cloud platforms</p>
            <ul type='none'>
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>Cloud Migration</li><br/>
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>Infrastructure</li><br/>

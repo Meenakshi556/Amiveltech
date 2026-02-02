@@ -4,9 +4,11 @@ function About() {
   return (
     <div>
 {/* <!-- HERO SECTION --> */}
-<section class="hero-about"><br /><br /><br /><br /><br /><br /><br />
+<section class="hero"><br /><br /><br /><br /><br /><br /><br />
+<div className='hero-content'>
   <h1>About Amivel Technologies</h1>
   <p>Empowering businesses through innovative digital solutions</p>
+</div>
 </section>
 
 {/* <!-- COMPANY OVERVIEW --> */}

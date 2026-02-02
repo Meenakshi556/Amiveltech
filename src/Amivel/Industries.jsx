@@ -2,18 +2,20 @@ import React from 'react'
 
 const Industries = () => {
   return (
-      <div className="industries-page">
-      
-      {/* Hero Section */}
-      <section className="industries-hero">
-        <div className="hero-overlay">
-          <h1>Industries We Serve</h1>
+    <>
+    <section class="hero"><br /><br /><br /><br /><br /><br /><br />
+    <div className='hero-content'>
+        <h1>Industries We Serve</h1>
           <p>
             We empower organizations across industries by delivering
             innovative, scalable, and secure technology solutions.
           </p>
-        </div>
-      </section>
+          </div>
+    </section>
+      <div className="industries-page">
+      
+      {/* Hero Section */}
+      
 
       {/* Industries Cards */}
       <section className="industries-section">
@@ -56,6 +58,7 @@ const Industries = () => {
   onClick={() => window.open("/contact","_blank")}>Contact Us</button>
 </section>
     </div>
+    </>
   )
 }
 

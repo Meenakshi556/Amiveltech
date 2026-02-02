@@ -6,7 +6,6 @@ import Footer from './Amivel/Footer'
 import Intro from './Amivel/Intro';
 import Cards from './Amivel/Cards';
 import Groups from './Amivel/Groups';
-import Scope from './Amivel/Scope'
 import Cyber from './Amivel/Cyber'
 import Contact from './Amivel/Contact';
 import Services from './Amivel/Services'
@@ -18,8 +17,8 @@ import Opinion from './Amivel/Opinion';
 import About from './Amivel/About';
 import Industries from './Amivel/Industries';
 import Product from './Amivel/Product';
-// import Hover from './Amivel/Hover'
-// import Video from './Video'
+import Security from './Amivel/Security';
+import Jobs from './Amivel/Jobs';
 
 
 function App() {
@@ -31,7 +30,7 @@ function App() {
           <>
           <Start />
           <Careers />
-          
+          <Jobs />
           </>
           } />
           {/* SERVICES PAGE */}
@@ -45,6 +44,7 @@ function App() {
             <>
             <Start />
             <Industries />
+            {/* <SiteFooter /> */}
             </>
           } />
           {/* ABOUT PAGE */}
@@ -83,7 +83,14 @@ function App() {
             <ApplyForm/>
             </>
           }/>
-          {/* HOME PAGE */}
+            {/* CYBER SECURITY */}
+            <Route path='/security' element={
+              <>
+              <Start />
+              <Security />
+                </>
+            }/>
+          {/* HOME P>AGE */}
           <Route
           path="/"
           element={
@@ -94,12 +101,9 @@ function App() {
       <Cards />
       <Groups />
       <Cyber />
-      {/* <Scope /> */}
       <Last />
       <Footer />
-      {/* <Opinion /> */}
-      {/* <About /> */}
-      {/* <Industries /> */}
+
             </>
           } />
           </Routes>

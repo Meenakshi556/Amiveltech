@@ -1,0 +1,19 @@
+[debug] [2026-02-02T13:26:55.361Z] ----------------------------------------------------------------------
+[debug] [2026-02-02T13:26:55.364Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sures\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-02-02T13:26:55.365Z] CLI Version:   15.5.1
+[debug] [2026-02-02T13:26:55.365Z] Platform:      win32
+[debug] [2026-02-02T13:26:55.365Z] Node Version:  v24.11.1
+[debug] [2026-02-02T13:26:55.365Z] Time:          Mon Feb 02 2026 18:56:55 GMT+0530 (India Standard Time)
+[debug] [2026-02-02T13:26:55.365Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\sures\OneDrive\Desktop\Amivel\taskpro
+

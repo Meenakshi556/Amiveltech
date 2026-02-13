@@ -64,10 +64,10 @@ data.append("company", company);
   return (
     <div>
             <section className='Apply-form'><br />
-              <h3 className='apply-title ' style={{ marginBottom: "10px" ,marginLeft: "80vh"}}>
+              <h3 className='apply-title ' style={{ marginBottom: "10px" ,marginLeft: "35%"}}>
   Applying for: <span style={{ color: "#0a58ca" }}>{jobTitle}</span>
 </h3>
-<p className='apply-company'  style={{ marginBottom: "10px" ,marginLeft: "80vh"}}><b>
+<p className='apply-company'  style={{ marginBottom: "10px" ,marginLeft: "35%"}}><b>
   Company: {company}</b></p>
       <form onSubmit={handleSubmit }>
         <Link to="/careers"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

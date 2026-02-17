@@ -13,8 +13,9 @@ function Hero() {
     const interval = setInterval(() => {
       setIndex(prev => (prev + 1) % messages.length)
     },3000)
+
     return () => clearInterval(interval)
-  },[messages.length])
+  },[])
   return (
     <div>
         <section className='sec1'>

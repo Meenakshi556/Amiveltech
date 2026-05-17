@@ -4,7 +4,7 @@ function About() {
   return (
     <div>
 {/* <!-- HERO SECTION --> */}
-<section class="hero"><br /><br /><br /><br /><br /><br /><br />
+<section className="hero"><br /><br /><br /><br /><br /><br /><br />
 <div className='hero-content'>
   <h1>About Amivel Technologies</h1>
   <p>Empowering businesses through innovative digital solutions</p>
@@ -12,7 +12,7 @@ function About() {
 </section>
 
 {/* <!-- COMPANY OVERVIEW --> */}
-<section class="overview">
+<section className="overview">
   <h2>Who We Are</h2>
   <p>
     Amivel Tech Private Limited is a technology-driven IT company
@@ -23,8 +23,8 @@ function About() {
 </section>
 
 {/* <!-- MISSION & VISION --> */}
-<section class="mission-vision">
-  <div class="box">
+<section className="mission-vision">
+  <div className="box">
     <h3>Our Mission</h3>
     <p>
       To deliver reliable, scalable, and secure technology
@@ -33,7 +33,7 @@ function About() {
     </p>
   </div>
 
-  <div class="box">
+  <div className="box">
     <h3>Our Vision</h3>
     <p>
       To become a trusted global technology partner known for
@@ -43,18 +43,18 @@ function About() {
 </section>
 
 {/* <!-- VALUES --> */}
-<section class="values">
+<section className="values">
   <h2>Our Core Values</h2>
-  <div class="value-cards">
-    <div class="about-card">Innovation</div>
-    <div class="about-card">Integrity</div>
-    <div class="about-card">Quality</div>
-    <div class="about-card">Customer Focus</div>
+  <div className="value-cards">
+    <div className="about-card">Innovation</div>
+    <div className="about-card">Integrity</div>
+    <div className="about-card">Quality</div>
+    <div className="about-card">Customer Focus</div>
   </div>
 </section>
 
 {/* <!-- WHY AMIVEL --> */}
-<section class="why-us">
+<section className="why-us">
   <h2>Why Choose Amivel Tech?</h2>
   <ul>
     <li>Experienced and skilled professionals</li>
@@ -65,7 +65,7 @@ function About() {
 </section>
 
 {/* <!-- CALL TO ACTION --> */}
-<section class="bts">
+<section className="bts">
   <h2>Partner With Us</h2>
   <p>Let’s build innovative solutions together.</p>
   <button

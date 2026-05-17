@@ -24,7 +24,7 @@ function Contact() {
 
   try {
     const res = await axios.post(
-      "http://localhost/api/contact.php",
+      `${process.env.REACT_APP_API_URL || "http://localhost:8081"}/api/contact`,
       formData,
       {
         headers: {
@@ -40,12 +40,12 @@ function Contact() {
     }
   } catch (error) {
     console.error(error);
-    alert("Server error");
+    alert(error.response?.data?.message || "Server error");
   }
 };
   return (
     <>
-     <section class="hero"><br /><br /><br /><br /><br /><br /><br />
+     <section className="hero"><br /><br /><br /><br /><br /><br /><br />
      <div className='hero-content'>
       <h1>Contact Us</h1>
       </div>
@@ -84,7 +84,7 @@ contact us via our social channels.
         className='dashedline' 
            placeholder="Subject"
            name="subject" 
-           value={formData.jobTitle}
+           value={formData.subject}
            onChange={handleChange}
          /><br /><br />
         <input type="text"
@@ -99,21 +99,30 @@ contact us via our social channels.
         </form>
     </div>
     <div className='hero-content'>
-    <img id="messege-img"src="https://th.bing.com/th/id/OIP.SVc0OODuuJpfSIw5DrZjVgHaHa?w=195&h=196&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="" width={500}/>
+    <img id="messege-img"src="https://cdn.corenexis.com/files/c/9914228720.png" alt="" width={500}/>
     </div>
     <br /><br />
     <div className='contact-address'>
         <ul type='none'>
-          <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>P No 16, Prasanthi Hills
-Bachupally,Nizampet Hyderabad <br />
-Telangana, India - 500090</p></li>
+           <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>Plot No. 16
+Prasanthi Hills
+Near Bachupally Main Road,
+Bachupally,
+Hyderabad – 500090
+Telangana,
+India</p></li>
+          <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>Mytri Square,
+91springboard,
+Second Floor
+ F948+W7, Kondapur, Laxmi Cyber City, Whitefields, HITEC City, Hyderabad, Telangana 500084</p></li>
           <li><img src="https://cdn-icons-png.flaticon.com/128/646/646135.png" alt="" width={30} height={30}/><p>HR@amiveltech.com </p></li>
           <li><img src="https://cdn-icons-png.flaticon.com/128/483/483947.png" alt=""  width={30} height={30}/>
           <p>+91 9989498088</p></li>
         </ul>
         </div>
+        
     </section>
-
+<br />
     </>
   )
 }

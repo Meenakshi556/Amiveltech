@@ -18,7 +18,7 @@ function Hero() {
   },[])
   return (
     <div>
-        <section className='sec1'>
+        <section className='sec1'><br /><br /><br />
           <div className='text-wrapper'>
             <h1 className='text'>{messages[index]}</h1>
           </div>

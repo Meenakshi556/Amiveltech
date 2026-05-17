@@ -3,7 +3,7 @@ import React from 'react'
 const Industries = () => {
   return (
     <>
-    <section class="hero"><br /><br /><br /><br /><br /><br /><br />
+    <section className="hero"><br /><br /><br /><br /><br /><br /><br />
     <div className='hero-content'>
         <h1>Industries We Serve</h1>
           <p>
@@ -51,7 +51,7 @@ const Industries = () => {
           </p>
         </div>
         </section>
-        <section class="bts">
+        <section className="bts">
   <h2>Partner With Us</h2>
   <p>Let’s build innovative solutions together.</p>
   <button

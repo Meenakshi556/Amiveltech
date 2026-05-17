@@ -1,67 +1,124 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase/firebase"; // adjust path if needed
-import "./Jobs.css";
 import { useNavigate } from "react-router-dom";
-
-
+import { db } from "../firebase/firebase";
+import "./Jobs.css";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  console.log("PROJECT ID:", process.env.REACT_APP_FIREBASE_PROJECT_ID);
-
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const querySnapshot = await getDocs(collection(db, "Jobs"));
-      const jobsData = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-
-      }));
-      setJobs(jobsData);
-      console.log(jobsData);
+      try {
+        const querySnapshot = await getDocs(collection(db, "Jobs"));
+        const jobsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setJobs(jobsData);
+      } catch (err) {
+        console.error(err);
+        setError("Unable to load open positions right now.");
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchJobs();
   }, []);
 
+  const formatSkills = (skills) => {
+    if (!skills) return [];
+    if (Array.isArray(skills)) return skills;
+    return String(skills)
+      .split(",")
+      .map((skill) => skill.trim())
+      .filter(Boolean);
+  };
+
   return (
-    <>
     <section className="jobs-section">
-      <h2 className="jobs-heading">Open Positions</h2>
+      <div className="jobs-header">
+        <p className="jobs-eyebrow">Careers</p>
+        <h2 className="jobs-heading">Open Positions</h2>
+      </div>
+
+      {loading && <p className="jobs-status">Loading positions...</p>}
+      {error && <p className="jobs-status jobs-error">{error}</p>}
+      {!loading && !error && jobs.length === 0 && (
+        <p className="jobs-status">No open positions available right now.</p>
+      )}
 
       <div className="jobs-container">
-        {jobs.map(Job => (
-          <div className="job-card" key={Job.id}>
-            <h3>{Job.title}</h3>
-            <p className="company">{Job.company}</p>
-            <img src="https://amiveltech.com/images/logo.png" alt=""  width={100}/>
-            <p><strong>YOP:</strong> {Job.yop}</p>
-            <p><strong>Skills:</strong> {Job.skills}</p>
-            <p><strong>Gender:</strong> {Job.gender}</p>
-            <p className="location">📍 {Job.location}</p>
+        {jobs.map((job) => {
+          const skills = formatSkills(job.skills);
 
-            <button
-              className="apply-btn"
-              onClick={() =>
-  navigate("/applyform", {
-    state: {
-      jobId: Job.id,
-      jobTitle: Job.title,
-      company: Job.company,
-    },
-  })
-}
-            >
-              Apply
-            </button>
-          </div>
-        ))}
+          return (
+            <article className="job-card" key={job.id}>
+              <div className="job-card-top">
+                <div>
+                  <p className="job-company">{job.company}</p>
+                  <h3>{job.title}</h3>
+                </div>
+                <img
+                  src="https://amiveltech.com/images/logo.png"
+                  alt="AmivelTech"
+                  className="job-logo"
+                />
+              </div>
+
+              <div className="job-details">
+                <p>
+                  <span>YOP</span>
+                  {job.yop || "Any"}
+                </p>
+                <p>
+                  <span>Gender</span>
+                  {job.gender || "Any"}
+                </p>
+                <p>
+                  <span>Location</span>
+                  {job.location || "Not specified"}
+                </p>
+              </div>
+
+              <div className="job-skills">
+                <span className="job-skills-label">Skills</span>
+                <div className="job-skill-list">
+                  {skills.length > 0 ? (
+                    skills.map((skill) => (
+                      <span className="job-skill" key={skill}>
+                        {skill}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="job-skill">Not specified</span>
+                  )}
+                </div>
+              </div>
+
+              <button
+                className="apply-btn"
+                onClick={() =>
+                  navigate("/applyform", {
+                    state: {
+                      jobId: job.id,
+                      jobTitle: job.title,
+                      company: job.company,
+                    },
+                  })
+                }
+              >
+                Apply
+              </button>
+            </article>
+          );
+        })}
       </div>
     </section>
-    </>
   );
 };
 

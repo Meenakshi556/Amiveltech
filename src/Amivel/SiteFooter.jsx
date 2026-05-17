@@ -32,9 +32,17 @@ function SiteFooter() {
             <div>
                 <h3>Connect with us</h3>
                 <ul className="footer-details"type='none'>
-                    <li><p>P No 16, Prasanthi Hills
-Bachupally,Nizampet <br />Hyderabad
-Telangana, India - 500090</p></li>
+                    <li>
+                        <p>Plot No. 16
+Prasanthi Hills
+Near Bachupally Main Road,
+Bachupally,
+Hyderabad – 500090
+Telangana,
+India</p><p>Mytri Square,
+91springboard,
+Second Floor
+ F948+W7, Kondapur, Laxmi Cyber City, Whitefields, HITEC City, Hyderabad, Telangana 500084</p></li>
                     <li>
           <p>HR@amiveltech.com</p></li>
                     <li>

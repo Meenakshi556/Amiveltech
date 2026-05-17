@@ -44,7 +44,7 @@ data.append("company", company);
 
     try {
       const res = await axios.post(
-        "http://localhost/api/submit.php",data,
+        `${process.env.REACT_APP_API_URL || "http://localhost:8081"}/api/apply`,data,
         {
           headers: {
             "Content-Type" : "multipart/form-data",
@@ -58,7 +58,7 @@ data.append("company", company);
       }
     } catch (err) {
       console.error(err);
-      alert("Server error")
+      alert(err.response?.data?.message || "Server error")
     }
   };
   return (

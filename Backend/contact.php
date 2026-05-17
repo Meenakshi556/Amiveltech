@@ -9,6 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '/PHPMailer-master/src/Exception.php';
 require __DIR__ . '/PHPMailer-master/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer-master/src/SMTP.php';
+require __DIR__ . '/db.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
@@ -16,11 +17,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
 // DB connection
-$conn = new mysqli("localhost", "root", "", "amivel_db");
-if ($conn->connect_error) {
-    echo json_encode(["status" => "db_error"]);
-    exit;
-}
+$conn = get_pg_connection();
 
 // Read JSON
 $data = json_decode(file_get_contents("php://input"), true);
@@ -40,21 +37,14 @@ $subject   = $data['subject'];
 $message   = $data['message'];
 
 // Insert into DB
-$stmt = $conn->prepare(
+$dbResult = pg_query_params(
+    $conn,
     "INSERT INTO contact_messages (firstname, lastname, email, subject, message)
-     VALUES (?, ?, ?, ?, ?)"
+     VALUES ($1, $2, $3, $4, $5)",
+    [$firstname, $lastname, $email, $subject, $message]
 );
 
-$stmt->bind_param(
-    "sssss",
-    $firstname,
-    $lastname,
-    $email,
-    $subject,
-    $message
-);
-
-$dbSuccess = $stmt->execute();
+$dbSuccess = $dbResult !== false;
 
 // -------- EMAIL USING PHPMailer --------
 $mailSuccess = false;
@@ -101,6 +91,5 @@ if ($dbSuccess && $mailSuccess) {
     echo json_encode(["status" => "error"]);
 }
 
-$stmt->close();
-$conn->close();
+pg_close($conn);
 ?>

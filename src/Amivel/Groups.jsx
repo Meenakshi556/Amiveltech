@@ -32,7 +32,7 @@ function Groups(props) {
             
         </section>
         <section className='groupcards3'>
-            <div className="img5"><img src="https://tse4.mm.bing.net/th/id/OIP.drdtaZaChZdebxwJ1MhdGwAAAA?pid=ImgDet&w=184&h=200&c=7&dpr=1.3&o=7&rm=3" alt="ai" height={379} width={380} className='zoom-img'/></div>
+            <div className="img5"><img src="https://file.aiquickdraw.com/i/B-s9DogcQUCwfxVP4T9E0A.jpg" alt="ai" height={379} width={380} className='zoom-img'/></div>
             <div className="colorcards" id="sixth">
                 <h3>TRANSFORMATION IN A TIME OF DISRUPTION</h3><br />
                 <p>Corporations are feeling the pressure in today’s volatile macroeconomic environment. Supply chains are</p>

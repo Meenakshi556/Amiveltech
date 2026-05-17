@@ -12,17 +12,10 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '/PHPMailer-master/src/Exception.php';
 require __DIR__ . '/PHPMailer-master/src/PHPMailer.php';
 require __DIR__ . '/PHPMailer-master/src/SMTP.php';
+require __DIR__ . '/db.php';
 
 // DB CONNECTION
-$conn = new mysqli("localhost", "root", "", "amivel_db");
-
-if ($conn->connect_error) {
-  echo json_encode([
-    "status" => "error",
-    "message" => "DB connection failed"
-    ]);
-  exit;
-}
+$conn = get_pg_connection();
 
 if(empty($_POST)){
     echo json_encode([
@@ -63,38 +56,38 @@ $company  = $_POST['company'];
 
 // FILE UPLOAD
 $uploadDir = "uploads/";
+$absoluteUploadDir = __DIR__ . "/" . $uploadDir;
+if (!is_dir($absoluteUploadDir)) {
+  mkdir($absoluteUploadDir, 0777, true);
+}
 $fileName = time() . "_" . $_FILES['resume']['name'];
-$targetFile = $uploadDir . $fileName;
+$targetFile = $absoluteUploadDir . $fileName;
 
 move_uploaded_file($_FILES['resume']['tmp_name'], $targetFile);
 
 // DB INSERT
-$stmt = $conn->prepare(
-  "INSERT INTO applications 
-(firstname, lastname, email, mobile, college, experience, resume, job_id, job_title, company)
-
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+$dbResult = pg_query_params(
+  $conn,
+  "INSERT INTO applications
+  (firstname, lastname, email, mobile, college, experience, resume, job_id, job_title, company)
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+  [
+    $firstname,
+    $lastname,
+    $email,
+    $mobile,
+    $college,
+    $experience,
+    $fileName,
+    $jobId,
+    $jobTitle,
+    $company
+  ]
 );
 
-$stmt->bind_param(
-  "ssssssssss",
-  $firstname,
-  $lastname,
-  $email,
-  $mobile,
-  $college,
-  $experience,
-  $fileName,
-  $jobId,
-  $jobTitle,
-  $company
-);
-
-
-// $dbSuccess = $stmt->execute();
 
 // EMAIL
-if ($stmt->execute()) {
+if ($dbResult !== false) {
 
   $mail = new PHPMailer(true);
 
@@ -144,3 +137,5 @@ Resume attached.";
 } else {
   echo json_encode(["status" => "error", "message" => "DB insert failed"]);
 }
+
+pg_close($conn);

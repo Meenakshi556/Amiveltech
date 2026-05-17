@@ -3,7 +3,7 @@ import React from 'react'
 function Services() {
   return (
     <>
-        <section class="hero"><br /><br /><br /><br /><br /><br /><br />
+        <section className="hero"><br /><br /><br /><br /><br /><br /><br />
         <div className='hero-content'>
             <h1>Our Services</h1>    
             </div>

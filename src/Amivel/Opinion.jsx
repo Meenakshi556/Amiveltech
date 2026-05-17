@@ -5,7 +5,7 @@ function Opinion() {
     <div>
         
 {/* <!-- HERO SECTION --> */}
-<section class="hero"><br /><br /><br /><br /><br /><br /><br />
+<section className="hero"><br /><br /><br /><br /><br /><br /><br />
 <div className='hero-content'>
   <h1>What We Think</h1>
   <p>
@@ -16,8 +16,8 @@ function Opinion() {
 </section>
 
 {/* <!-- THINKING CARDS --> */}
-<section class="cards">
-  <div class="card">
+<section className="cards">
+  <div className="card">
     <h3>Innovation First</h3>
     <p>
       We continuously explore modern technologies to
@@ -25,7 +25,7 @@ function Opinion() {
     </p>
   </div>
 
-  <div class="card">
+  <div className="card">
     <h3>Client-Centric Approach</h3>
     <p>
       Every solution is designed around client goals,
@@ -33,7 +33,7 @@ function Opinion() {
     </p>
   </div>
 
-  <div class="card">
+  <div className="card">
     <h3>Quality Driven</h3>
     <p>
       We follow best practices, testing standards, and
@@ -43,7 +43,7 @@ function Opinion() {
 </section>
 
 {/* <!-- TECHNOLOGY INSIGHTS --> */}
-<section class="insights">
+<section className="insights">
   <h2>Technology Insights</h2>
   <ul>
     <li>Cloud-native and scalable architectures</li>
@@ -54,7 +54,7 @@ function Opinion() {
 </section>
 
 {/* <!-- FUTURE VISION --> */}
-<section class="vision">
+<section className="vision">
   <h2>Our Future Vision</h2>
   <p>
     We envision a digital future where businesses of all sizes
@@ -63,7 +63,7 @@ function Opinion() {
 </section>
 
 {/* <!-- CALL TO ACTION --> */}
-<section class="cta">
+<section className="cta">
   <h2>Let’s Build the Future Together</h2>
   <button 
   onClick={() => window.open("/contact","_blank")}>Work With Us</button>

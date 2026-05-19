@@ -18,20 +18,13 @@ app.use(express.json());
 /* =========================
    DATABASE CONNECTION
 ========================= */
+
 const db = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
 });
-
-// const db = new Pool({
-//   host: process.env.PGHOST || 'localhost',
-//   port: Number(process.env.PGPORT || 5432),
-//   user: process.env.PGUSER || 'postgres',
-//   password: process.env.PGPASSWORD || '',
-//   database: process.env.PGDATABASE || 'amivel_db',
-// });
 
 db.connect()
   .then(() => console.log('✅ PostgreSQL Connected'))
@@ -57,9 +50,11 @@ const upload = multer({
 ========================= */
 
 function required(value) {
-  return value !== undefined &&
+  return (
+    value !== undefined &&
     value !== null &&
-    String(value).trim() !== '';
+    String(value).trim() !== ''
+  );
 }
 
 /* =========================
@@ -74,25 +69,14 @@ function getMailer() {
     throw new Error('SMTP credentials missing in .env');
   }
 
-//  return nodemailer.createTransport({
-//   host: process.env.SMTP_HOST || 'smtp.gmail.com',
-//   port: Number(process.env.SMTP_PORT || 587),
-//   secure: String(process.env.SMTP_SECURE || '').toLowerCase() === 'true',
-//   auth: {
-//     user: smtpUser,
-//     pass: smtpPass,
-//   },
-// });
-return nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: Number(process.env.SMTP_PORT || 587),
-  secure: false,
-  family: 4,
-  auth: {
-    user: smtpUser,
-    pass: smtpPass,
-  },
-});
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: smtpUser,
+      pass: smtpPass,
+    },
+    connectionTimeout: 10000,
+  });
 }
 
 async function sendMail({ subject, text, replyTo, attachments = [] }) {
@@ -130,13 +114,16 @@ app.get('/', (req, res) => {
 app.get('/api/mail-status', async (req, res) => {
   try {
     const mailer = getMailer();
+
     await mailer.verify();
 
     return res.json({
       status: 'success',
       message: 'Mail login verified',
     });
+
   } catch (err) {
+
     console.log('Mail Status Error:', err.message);
 
     return res.status(500).json({
@@ -152,6 +139,7 @@ app.get('/api/mail-status', async (req, res) => {
 
 app.get('/users', async (req, res) => {
   try {
+
     const { rows } = await db.query(
       'SELECT * FROM users ORDER BY id'
     );
@@ -159,6 +147,7 @@ app.get('/users', async (req, res) => {
     return res.json(rows);
 
   } catch (err) {
+
     console.log('❌ Users Fetch Error:', err.message);
 
     return res.status(500).json({
@@ -205,8 +194,6 @@ app.post('/api/contact', async (req, res) => {
 
   try {
 
-    /* INSERT INTO DATABASE */
-
     await db.query(
       `
       INSERT INTO contact_messages
@@ -217,8 +204,6 @@ app.post('/api/contact', async (req, res) => {
     );
 
     console.log('✅ Contact Saved To DB');
-
-    /* SEND EMAIL */
 
     await sendMail({
       subject: `Contact Form - ${subject}`,
@@ -238,7 +223,7 @@ app.post('/api/contact', async (req, res) => {
 
   } catch (err) {
 
-    console.log('❌ Contact API Error:', err);
+    console.log('❌ Contact API Error:', err.message);
 
     return res.status(500).json({
       status: 'error',
@@ -307,8 +292,6 @@ app.post('/api/apply', upload.single('resume'), async (req, res) => {
       storedResumePath
     );
 
-    /* INSERT INTO DATABASE */
-
     await db.query(
       `
       INSERT INTO applications
@@ -343,8 +326,6 @@ app.post('/api/apply', upload.single('resume'), async (req, res) => {
 
     console.log('✅ Application Saved');
 
-    /* SEND EMAIL */
-
     await sendMail({
       subject: `New Job Application - ${jobTitle || 'Application'}`,
       replyTo: email,
@@ -370,7 +351,7 @@ app.post('/api/apply', upload.single('resume'), async (req, res) => {
 
   } catch (err) {
 
-    console.log('❌ Application API Error:', err);
+    console.log('❌ Application API Error:', err.message);
 
     return res.status(500).json({
       status: 'error',
@@ -384,6 +365,5 @@ app.post('/api/apply', upload.single('resume'), async (req, res) => {
 ========================= */
 
 app.listen(port, () => {
-  // console.log(`🚀 Backend running on http://localhost:${port}`);
   console.log(`🚀 Backend running on port ${port}`);
 });

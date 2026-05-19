@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import insurance_hand from "../Amivel/assets/insurance_hand.webp"
+import heart_insur from "../Amivel/assets/health_insur.jpg"
+import life from "../Amivel/assets/life_insurance.avif"
+import travel from "../Amivel/assets/travel_insur.jpg"
+import home from "../Amivel/assets/home_insur.jpg"
 
 function Last() {
   const images = [
-    "https://b2343758.smushcdn.com/2343758/wp-content/uploads/indexed-universal-life-insurance-a-complete-guide.jpeg?lossy=1&strip=1&webp=1",
-    "https://img.freepik.com/premium-photo/different-careers-insurance-wording-insurance-is-important-ensure-risk-guarantee-stability-life-health-financial-concept_50039-5223.jpg",
-    "https://dev.findqualityinsurance.com/wp-content/uploads/2017/06/Health-Insurance.jpg",
-    "https://landen.imgix.net/cy57inb2lyhe/assets/yn6thu8i.jpg",
-    "https://globalbusinessdiary.com/wp-content/uploads/2023/07/Types-Of-Business-Insurance-Policies.jpg"
+    insurance_hand,
+    heart_insur,
+    life,
+    travel,
+    home
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from "../Amivel/assets/logo.png";
 
 function SiteFooter() {
   return (
     <div>
         <footer className='another-footer'>
-            <Link to="/"><img src="https://amiveltech.com/images/logo.png" alt="" width={300}
+            <Link to="/"><img src={logo} alt="" width={300}
             /></Link><br />
             <div className='collections'>
             <div>

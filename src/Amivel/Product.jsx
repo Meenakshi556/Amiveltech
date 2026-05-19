@@ -1,4 +1,5 @@
 import React from 'react'
+import product from "../Amivel/assets/product.png"
 
 const Product = () => {
   return (
@@ -40,7 +41,7 @@ const Product = () => {
 
           <div>
             <img
-              src="https://www.flurish.in/blog/wp-content/uploads/2022/11/Insurance-Available-In-India-640x427.png"
+              src={product}
               alt="Insurance claim support"
               style={{
                 width: "100%",

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-
+import logo from "../Amivel/assets/logo.png";
 
 function Start() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -62,7 +62,7 @@ function Start() {
           id="logo" 
           
           onClick={() => window.open("/", "_blank")} 
-          src="https://amiveltech.com/images/logo.png" 
+          src={logo} 
           alt="logo" 
           width="300"
           style={{ cursor: 'pointer' }}
@@ -181,7 +181,7 @@ function Start() {
           left: 0;
           right: 0;
           background: white;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          // box-shadow: 0 2px 10px rgba(0, 0,    0, 0.1);
           padding: 0px 30px;
           display: flex;
           justify-content: space-between;

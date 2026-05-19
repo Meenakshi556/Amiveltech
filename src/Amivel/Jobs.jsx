@@ -3,6 +3,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import "./Jobs.css";
+import logo from "../Amivel/assets/logo.png";
+
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -64,7 +66,7 @@ const Jobs = () => {
                   <h3>{job.title}</h3>
                 </div>
                 <img
-                  src="https://amiveltech.com/images/logo.png"
+                  src={logo}
                   alt="AmivelTech"
                   className="job-logo"
                 />

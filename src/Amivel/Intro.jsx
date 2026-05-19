@@ -1,4 +1,5 @@
 import React from 'react'
+import intro from "../Amivel/assets/intro_img.png"
 
 function Intro() {
   return (
@@ -14,7 +15,7 @@ businesses through smart, scalable, and future-ready
 digital solutions while maintaining excellence, integrity,
 and customer satisfaction in everything we do.</p>
             </div>
-            <div id="suit"><img src="https://franklincovey.com.sg/wp-content/uploads/2023/09/Execute-Your-Strategic-Goals-and-Create-Breakthrough-Results.png" alt="" srcset="" id="intro-img"/></div>
+            <div id="suit"><img src={intro} alt="" id="intro-img"/></div>
         </section>
     </div>
   )

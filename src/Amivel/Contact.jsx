@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios';
+import contact_girl from '../Amivel/assets/contact-img.png';
 
 function Contact() {
   const [formData,setFormData] = useState({
@@ -99,7 +100,7 @@ contact us via our social channels.
         </form>
     </div>
     <div className='hero-content'>
-    <img id="messege-img"src="https://cdn.corenexis.com/files/c/9914228720.png" alt="" width={500}/>
+    <img id="messege-img"src={contact_girl} alt="" width={500}/>
     </div>
     <br /><br />
     <div className='contact-address'>

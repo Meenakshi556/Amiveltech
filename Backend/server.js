@@ -74,10 +74,20 @@ function getMailer() {
     throw new Error('SMTP credentials missing in .env');
   }
 
- return nodemailer.createTransport({
+//  return nodemailer.createTransport({
+//   host: process.env.SMTP_HOST || 'smtp.gmail.com',
+//   port: Number(process.env.SMTP_PORT || 587),
+//   secure: String(process.env.SMTP_SECURE || '').toLowerCase() === 'true',
+//   auth: {
+//     user: smtpUser,
+//     pass: smtpPass,
+//   },
+// });
+return nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
   port: Number(process.env.SMTP_PORT || 587),
-  secure: String(process.env.SMTP_SECURE || '').toLowerCase() === 'true',
+  secure: false,
+  family: 4,
   auth: {
     user: smtpUser,
     pass: smtpPass,

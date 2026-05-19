@@ -18,14 +18,20 @@ app.use(express.json());
 /* =========================
    DATABASE CONNECTION
 ========================= */
-
 const db = new Pool({
-  host: process.env.PGHOST || 'localhost',
-  port: Number(process.env.PGPORT || 5432),
-  user: process.env.PGUSER || 'postgres',
-  password: process.env.PGPASSWORD || '',
-  database: process.env.PGDATABASE || 'amivel_db',
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
+
+// const db = new Pool({
+//   host: process.env.PGHOST || 'localhost',
+//   port: Number(process.env.PGPORT || 5432),
+//   user: process.env.PGUSER || 'postgres',
+//   password: process.env.PGPASSWORD || '',
+//   database: process.env.PGDATABASE || 'amivel_db',
+// });
 
 db.connect()
   .then(() => console.log('✅ PostgreSQL Connected'))
@@ -368,5 +374,6 @@ app.post('/api/apply', upload.single('resume'), async (req, res) => {
 ========================= */
 
 app.listen(port, () => {
-  console.log(`🚀 Backend running on http://localhost:${port}`);
+  // console.log(`🚀 Backend running on http://localhost:${port}`);
+  console.log(`🚀 Backend running on port ${port}`);
 });

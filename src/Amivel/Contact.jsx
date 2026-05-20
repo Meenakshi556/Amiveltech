@@ -100,24 +100,24 @@ contact us via our social channels.
         </form>
     </div>
     <div className='hero-content'>
-    <img id="messege-img"src={contact_girl} alt="" width={500}/>
+    <img id="messege-img"src={contact_girl} alt="contact" width={500}/>
     </div>
     <br /><br />
     <div className='contact-address'>
         <ul type='none'>
-           <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>Plot No. 16
+           <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="loc" width={30} height={30}/><p>Plot No. 16
 Prasanthi Hills
 Near Bachupally Main Road,
 Bachupally,
 Hyderabad – 500090
 Telangana,
 India</p></li>
-          <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="" width={30} height={30}/><p>Mytri Square,
+          <li><img src="https://cdn-icons-png.flaticon.com/128/3179/3179068.png" alt="loc" width={30} height={30}/><p>Mytri Square,
 91springboard,
 Second Floor
  F948+W7, Kondapur, Laxmi Cyber City, Whitefields, HITEC City, Hyderabad, Telangana 500084</p></li>
-          <li><img src="https://cdn-icons-png.flaticon.com/128/646/646135.png" alt="" width={30} height={30}/><p>HR@amiveltech.com </p></li>
-          <li><img src="https://cdn-icons-png.flaticon.com/128/483/483947.png" alt=""  width={30} height={30}/>
+          <li><img src="https://cdn-icons-png.flaticon.com/128/646/646135.png" alt="email" width={30} height={30}/><p>HR@amiveltech.com </p></li>
+          <li><img src="https://cdn-icons-png.flaticon.com/128/483/483947.png" alt="contact"  width={30} height={30}/>
           <p>+91 9989498088</p></li>
         </ul>
         </div>

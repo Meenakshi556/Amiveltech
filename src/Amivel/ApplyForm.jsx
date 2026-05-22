@@ -1,10 +1,10 @@
 import React,{useState} from 'react';
-import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 
 function ApplyForm() {
+    const GOOGLE_SCRIPT_URL = process.env.REACT_APP_GOOGLE_SCRIPT_URL;
     const [formData, setFormData] = useState({
         firstName: "",
         lastName:"",
@@ -18,6 +18,8 @@ function ApplyForm() {
 const { jobId, jobTitle, company } = location.state || {};
 
       const [resume, setResume] = useState(null);
+      const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+      const [isSubmitting, setIsSubmitting] = useState(false);
 
 
        const handleChange = e => {
@@ -31,34 +33,90 @@ const { jobId, jobTitle, company } = location.state || {};
   const handleFileChange = (e) => {
     setResume(e.target.files[0]);
   }
+
+  const fileToBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = String(reader.result || "");
+        resolve(result.split(",")[1] || "");
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+
        const handleSubmit = async e => {
     e.preventDefault();
 
-    const data = new FormData();
-    Object.keys(formData).forEach(key => data.append(key, formData[key]));
-    data.append("resume", resume); // FILE
-    data.append("jobId", jobId);
-data.append("jobTitle", jobTitle);
-data.append("company", company);
+    if (!GOOGLE_SCRIPT_URL) {
+      setSubmitStatus({
+        type: "error",
+        message: "Google Apps Script URL is not configured.",
+      });
+      return;
+    }
 
+    if (!resume) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please upload your resume.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: "", message: "" });
 
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL || "http://localhost:8081"}/api/apply`,data,
-        {
-          headers: {
-            "Content-Type" : "multipart/form-data",
-          },
-        }
-      );
-      if(res.data.status === "success") {
-      alert("Application submitted successfully");
+      const resumeBase64 = await fileToBase64(resume);
+      const res = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({
+          formType: "application",
+          ...formData,
+          jobId,
+          jobTitle,
+          company,
+          resumeName: resume.name,
+          resumeMimeType: resume.type,
+          resumeBase64,
+        }),
+      });
+
+      const result = await res.json();
+
+      if(result.status === "success") {
+        setSubmitStatus({
+          type: "success",
+          message: "Application submitted successfully.",
+        });
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          mobile: "",
+          college: "",
+          experience: "",
+        });
+        setResume(null);
+        e.target.reset();
       }else {
-        alert(res.data.message)
+        setSubmitStatus({
+          type: "error",
+          message: result.message || "Failed to submit the application.",
+        });
       }
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.message || "Server error")
+      setSubmitStatus({
+        type: "error",
+        message: "Unable to submit right now. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -116,7 +174,14 @@ data.append("company", company);
         <input type='file' name='resume' 
         className='Apply-inputs'     
         onChange={handleFileChange} required/>
-        <button type="submit" id="btn-submit">Submit</button>
+        <button type="submit" id="btn-submit" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Submit"}
+        </button>
+        {submitStatus.message && (
+          <p role="status" style={{ color: submitStatus.type === "success" ? "green" : "red" }}>
+            {submitStatus.message}
+          </p>
+        )}
       </form>
     </section>
     </div>

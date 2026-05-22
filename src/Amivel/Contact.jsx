@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
-import axios from 'axios';
 import contact_girl from '../Amivel/assets/contact-img.png';
 
 function Contact() {
+  const GOOGLE_SCRIPT_URL = process.env.REACT_APP_GOOGLE_SCRIPT_URL;
   const [formData,setFormData] = useState({
       firstName: "",
       lastName:"",
@@ -11,6 +11,8 @@ function Contact() {
       message:"",
       agree:false,
     })
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
     const handleChange =(e) =>{
       const { name,value, type, checked} = e.target;
@@ -23,25 +25,58 @@ function Contact() {
     const handleSubmit = async (e) => {
   e.preventDefault();
 
-  try {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL || "http://localhost:8081"}/api/contact`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+  if (!GOOGLE_SCRIPT_URL) {
+    setSubmitStatus({
+      type: "error",
+      message: "Google Apps Script URL is not configured.",
+    });
+    return;
+  }
 
-    if (res.data.status === "success") {
-      alert("Submitted Successfully");
+  setIsSubmitting(true);
+  setSubmitStatus({ type: "", message: "" });
+
+  try {
+    const res = await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify({
+        formType: "contact",
+        ...formData,
+      }),
+    });
+
+    const result = await res.json();
+
+    if (result.status === "success") {
+      setSubmitStatus({
+        type: "success",
+        message: "Submitted successfully.",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
+        agree: false,
+      });
     } else {
-      alert("Failed: " + res.data.message);
+      setSubmitStatus({
+        type: "error",
+        message: result.message || "Failed to submit the form.",
+      });
     }
   } catch (error) {
     console.error(error);
-    alert(error.response?.data?.message || "Server error");
+    setSubmitStatus({
+      type: "error",
+      message: "Unable to submit right now. Please try again.",
+    });
+  } finally {
+    setIsSubmitting(false);
   }
 };
   return (
@@ -96,7 +131,14 @@ contact us via our social channels.
            value={formData.message}
            onChange={handleChange}
          /><br /><br />
-        <br /><button id='send-btn'>Send Messege</button>
+        <br /><button id='send-btn' type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Messege"}
+        </button>
+        {submitStatus.message && (
+          <p role="status" style={{ color: submitStatus.type === "success" ? "green" : "red" }}>
+            {submitStatus.message}
+          </p>
+        )}
         </form>
     </div>
     <div className='hero-content'>

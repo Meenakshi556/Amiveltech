@@ -1,5 +1,10 @@
 import React from 'react'
-
+import cloud from "../Amivel/assets/cloud_ser.jpg";
+import webdev from "../Amivel/assets/web_ser.webp";
+import mobile from "../Amivel/assets/mobile.jpg";
+import software from "../Amivel/assets/software.jpg";
+import analytics from "../Amivel/assets/analytics.jpg";
+import staff from "../Amivel/assets/staff.png";
 function Services() {
   return (
     <>
@@ -11,7 +16,7 @@ function Services() {
         <section className='services-menu'>
             <div className='cloud-services'>
                 <div className='services-images'>
-                <img src="https://nexthop.ca/it-news/wp-content/uploads/2020/10/shutterstock_1120711154-4-1024x584.jpg" alt="" width={600} />
+                <img src={cloud} alt="" width={600} />
                 </div>
                 <div className='services-details'>
                    < h2>Cloud Services</h2>
@@ -41,12 +46,12 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             onClick={() => window.open("/contact","_blank")}>Contact Us</button>
                 </div>
                 <div className='services-images'>
-                    <img src="https://static.vecteezy.com/system/resources/previews/005/283/061/original/web-development-concept-in-3d-isometric-design-designer-works-with-code-interface-engineering-programming-settings-and-optimizes-pages-template-with-people-scene-illustration-for-webpage-vector.jpg" alt="" width={600}/>
+                    <img src={webdev} alt="" width={600}/>
                 </div>
             </div>
             <div className='mobile-development'>
                 <div className='services-images'>
-                    <img src="https://www.credencys.com/wp-content/uploads/2019/05/guidetoplan-web-and-mobile-apps.jpg" alt="" width={600} />
+                    <img src={mobile} alt="mobile" width={600} />
                 </div>
                 <div className='services-details'>
                     <h2>Mobile Development</h2>
@@ -75,13 +80,13 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             onClick={() => window.open("/contact","_blank")}>Contact Us</button>
                 </div>
                 <div className='services-images'>
-                    <img src="https://www.eleapsoftware.com/wp-content/uploads/2020/02/32employee-training-software-scaled.jpg" alt="" width={600}/>
+                    <img src={software} alt="" width={600}/>
                 </div>
 
             </div>
             <div className='analytics'>
                 <div className='services-images'>
-                    <img src="https://images.pexels.com/photos/185576/pexels-photo-185576.jpeg?cs=srgb&dl=pexels-marketingtuig-185576.jpg&fm=jpg" alt="" width={600} />
+                    <img src={analytics} alt="" width={600} />
                 </div>
                 <div className='services-details'>
                   <h2>Analytics</h2>
@@ -111,7 +116,7 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             onClick={() => window.open("/contact","_blank")}>Contact Us</button>
                 </div>
                 <div className='services-images'>
-                    <img src="https://th.bing.com/th/id/R.a008e2663911f4dcbe43dd2307bbb5f0?rik=scLLtcMCRDjEbg&riu=http%3a%2f%2fmetamorfs.com%2fassets%2fclient%2fimg%2fContract-staffing-services-1.png&ehk=%2fNG%2bcsoCPhgXFaK0HIJLKUjvp3uAF2LgKoUzoVaKN2A%3d&risl=&pid=ImgRaw&r=0" alt="" width={600}/>
+                    <img src={staff} alt="" width={600}/>
                 </div>
             </div>
         </section>

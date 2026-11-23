@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import cloud from "../Amivel/assets/cloud_ser.jpg";
 import webdev from "../Amivel/assets/web_ser.webp";
 import mobile from "../Amivel/assets/mobile.jpg";
@@ -6,6 +7,7 @@ import software from "../Amivel/assets/software.jpg";
 import analytics from "../Amivel/assets/analytics.jpg";
 import staff from "../Amivel/assets/staff.png";
 function Services() {
+  const navigate = useNavigate();
   return (
     <>
         <section className="hero"><br /><br /><br /><br /><br /><br /><br />
@@ -29,7 +31,7 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>Cloud Security</li><br />
             </ul>
             <button id="contact-btn"
-            onClick={() => window.open("/contact","_blank")}>Contact Us</button>
+            onClick={() => navigate("/contact")}>Contact Us</button>
                 </div>
             </div>
             <div className='web-development'>
@@ -43,7 +45,7 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>API Development5</li><br />
             </ul>
             <button id="contact-btn"
-            onClick={() => window.open("/contact","_blank")}>Contact Us</button>
+            onClick={() => navigate("/contact")}>Contact Us</button>
                 </div>
                 <div className='services-images'>
                     <img src={webdev} alt="" width={600}/>
@@ -63,7 +65,7 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>App Maintenance</li><br />
             </ul>
             <button id="contact-btn"
-            onClick={() => window.open("/contact","_blank")}>Contact Us</button>
+            onClick={() => navigate("/contact")}>Contact Us</button>
                 </div>
             </div>
             <div className='software-training'>
@@ -77,7 +79,7 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>Hands-on Projects</li><br />
             </ul>
             <button id="contact-btn"
-            onClick={() => window.open("/contact","_blank")}>Contact Us</button>
+            onClick={() => navigate("/contact")}>Contact Us</button>
                 </div>
                 <div className='services-images'>
                     <img src={software} alt="" width={600}/>
@@ -98,7 +100,7 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>Custom Dashboards</li><br />
             </ul>
             <button id="contact-btn"
-            onClick={() => window.open("/contact","_blank")}>Contact Us</button> 
+            onClick={() => navigate("/contact")}>Contact Us</button> 
                 </div>
                 
             </div>
@@ -113,7 +115,7 @@ cloud migration, DevOps & CI/CD, and cloud security across AWS, Azure, and Googl
             <li><img src="https://cdn-icons-png.flaticon.com/128/16750/16750043.png" alt="" width={20}/>Remote Teams</li><br />
             </ul>
             <button id="contact-btn"
-            onClick={() => window.open("/contact","_blank")}>Contact Us</button>
+            onClick={() => navigate("/contact")}>Contact Us</button>
                 </div>
                 <div className='services-images'>
                     <img src={staff} alt="" width={600}/>

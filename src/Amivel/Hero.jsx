@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react'
+import { useNavigate } from "react-router-dom";
  
 const messages = [
   "We deliver innovative IT solutions that drive growth",
@@ -7,6 +8,7 @@ const messages = [
 ]
 
 function Hero() {
+  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ function Hero() {
           </div>
 
             <button id="btn1"
-            onClick={() => window.open("/about","_blank")}><b>Know more</b></button>
+            onClick={() => navigate("/about")}><b>Know more</b></button>
         </section>
     </div>
   )

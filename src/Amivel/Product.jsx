@@ -102,7 +102,7 @@ const Product = () => {
           </div>
         </div>
       </section>
-      <footer classNmae="footer-product" style={{ 
+      <footer className="footer-product" style={{ 
         textAlign: "center",
          padding: "20px" ,
          background: "#dc9a0e",

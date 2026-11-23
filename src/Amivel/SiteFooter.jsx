@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import logo from "../Amivel/assets/logo.png";
 
 function SiteFooter() {
+  const navigate = useNavigate();
   return (
     <div>
         <footer className='another-footer'>
@@ -12,22 +14,22 @@ function SiteFooter() {
             <div>
                 <h3>Quick Links</h3>
                 <ul type="none">
-                    <li onClick={() => window.open("/","_blank")}>What we Do</li>
-                    <li onClick={() => window.open("/think","_blank")}>What we Think</li>
-                    <li onClick={() => window.open("/about","_blank")}>About Us</li>
-                    <li onClick={() => window.open("/careers","_blank")}>Carrers</li>
-                    <li onClick={() => window.open("/contact","_blank")}>Contact Us</li>
+                    <li onClick={() => navigate("/")}>What we Do</li>
+                    <li onClick={() => navigate("/think")}>What we Think</li>
+                    <li onClick={() => navigate("/about")}>About Us</li>
+                    <li onClick={() => navigate("/careers")}>Carrers</li>
+                    <li onClick={() => navigate("/contact")}>Contact Us</li>
                 </ul>
             </div>
             <div>
-                <h3 onClick={() => window.open("/services","_blank")}>Services</h3>
+                <h3 onClick={() => navigate("/services")}>Services</h3>
                 <ul type="none">
-                    <li onClick={() => window.open("/services","_blank")}>Cloud Services</li>
-                    <li onClick={() => window.open("/services","_blank")}>Web Development</li>
-                    <li onClick={() => window.open("/services","_blank")}>Mobile Development</li>
-                    <li onClick={() => window.open("/services","_blank")}>Software Trainings</li>
-                    <li onClick={() => window.open("/services","_blank")}>Analytics</li>
-                    <li onClick={() => window.open("/services","_blank")}>Staffing Servises</li>
+                    <li onClick={() => navigate("/services")}>Cloud Services</li>
+                    <li onClick={() => navigate("/services")}>Web Development</li>
+                    <li onClick={() => navigate("/services")}>Mobile Development</li>
+                    <li onClick={() => navigate("/services")}>Software Trainings</li>
+                    <li onClick={() => navigate("/services")}>Analytics</li>
+                    <li onClick={() => navigate("/services")}>Staffing Servises</li>
                 </ul>
             </div>
             <div>

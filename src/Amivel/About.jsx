@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 function About() {
+  const navigate = useNavigate();
   return (
     <div>
 {/* <!-- HERO SECTION --> */}
@@ -69,7 +71,7 @@ function About() {
   <h2>Partner With Us</h2>
   <p>Let’s build innovative solutions together.</p>
   <button
-  onClick={() => window.open("/contact","_blank")}>Contact Us</button>
+  onClick={() => navigate("/contact")}>Contact Us</button>
 </section>
     </div>
   )

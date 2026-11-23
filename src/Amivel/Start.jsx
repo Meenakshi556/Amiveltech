@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import logo from "../Amivel/assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function Start() {
+  const navigate = useNavigate();
   const [mobileMenu, setMobileMenu] = useState(false);
   const [open, setOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
@@ -51,7 +53,7 @@ function Start() {
     setOpen(false);
     setMobileMenu(false);
     setMobileDropdownOpen(false);
-    window.open(url, "_blank");
+    navigate(url);
   };
 
   return (
@@ -61,7 +63,7 @@ function Start() {
         <img 
           id="logo" 
           
-          onClick={() => window.open("/", "_blank")} 
+          onClick={() => navigate("/")} 
           src={logo} 
           alt="logo" 
           width="300"
@@ -116,12 +118,13 @@ function Start() {
           <li className="menu-item" id="we3" onClick={() => handleNavigation("/about")}>About Amivel</li>
           <li className="menu-item" id="we4" onClick={() => handleNavigation("/careers")}>Careers</li>
           <li className="menu-item" onClick={() => handleNavigation("/product")}>Product</li>
-          <li className="menu-item" id="we5" onClick={() => handleNavigation("/contact")}>Contact</li>
+          {/* <li className="menu-item" id="we5" onClick={() => handleNavigation("/contact")}>Contact</li> */}
+          <li className="menu-item" id="we5" onClick={() => navigate("/contact")}>Contact</li>
         </ul>
 
         {/* Mobile Menu Overlay */}
         {mobileMenu && (
-          <div className="mobile-menu-overlay" onClick={() => setMobileMenu(false)}>
+          <div className="mobile-menu-overlay" onClick={() => setMobileMenu(false)}>+
             <ul className="mobile-menu show">
               {/* What we Do with dropdown for mobile */}
               <li className="mobile-dropdown-item">

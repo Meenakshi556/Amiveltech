@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Opinion() {
+  const navigate = useNavigate();
   return (
     <div>
         
@@ -66,7 +68,7 @@ function Opinion() {
 <section className="cta">
   <h2>Let’s Build the Future Together</h2>
   <button 
-  onClick={() => window.open("/contact","_blank")}>Work With Us</button>
+  onClick={() => navigate("/contact")}>Work With Us</button>
 </section>
 
 

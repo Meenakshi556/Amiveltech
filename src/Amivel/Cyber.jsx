@@ -1,13 +1,15 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 function Cyber() {
+  const navigate = useNavigate();
   return (
     <section id="clone">
         <div id="hand">
           <div className='over'>
           <h1>State of Cybersecurity <br />Report 2025</h1><br /><br />
           <p className='hover-text'>Ai Strengthens and Disrupts Cyber Resilience.</p><br />
-          <button className='hover-text' onClick={() => window.open("/security","_blank")}>Learn More</button>
+          <button className='hover-text' onClick={() => navigate("/security")}>Learn More</button>
           </div>
           </div>
         <div id="girl">
@@ -15,7 +17,7 @@ function Cyber() {
           <h1>Customer<br /> Success Stories</h1><br /><br />
           <p className='hover-text'>How Amivel uses consulting-led,AI-powered<br /> strategies to help customers realize their<br /> ambitions.</p><br />
           <button className='hover-text'
-          onClick={() => window.open("/contact","_blank")}>Learn More</button>
+          onClick={() => navigate("/contact")}>Learn More</button>
           </div>
         </div>
     </section>

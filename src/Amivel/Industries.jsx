@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 const Industries = () => {
+  const navigate = useNavigate();
   return (
     <>
     <section className="hero"><br /><br /><br /><br /><br /><br /><br />
@@ -55,7 +57,7 @@ const Industries = () => {
   <h2>Partner With Us</h2>
   <p>Let’s build innovative solutions together.</p>
   <button
-  onClick={() => window.open("/contact","_blank")}>Contact Us</button>
+  onClick={() => navigate("/contact")}>Contact Us</button>
 </section>
     </div>
     </>
